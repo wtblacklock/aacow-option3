@@ -2243,20 +2243,62 @@ button {
   margin-bottom: 1.5rem;
 }
 
-.footer__hours {
-  font-size: 0.8125rem;
-  color: rgba(255,255,255,0.5);
-  line-height: 1.8;
+.footer__hours-bar {
+  padding-block: var(--space-lg);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  margin-bottom: var(--space-xl);
 }
 
-.footer__hours strong {
-  color: rgba(255,255,255,0.8);
-  display: block;
-  font-size: 0.75rem;
-  letter-spacing: 0.06em;
+.footer__hours-label {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  margin-bottom: 0.5rem;
-  margin-top: 1rem;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 1.25rem;
+}
+
+.footer__hours-grid {
+  display: flex;
+  gap: 0;
+  border-left: 1px solid rgba(255,255,255,0.1);
+}
+
+.footer__hours-day {
+  flex: 1;
+  padding: 0 1.5rem;
+  border-right: 1px solid rgba(255,255,255,0.1);
+}
+
+.footer__hours-day-name {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.02em;
+}
+
+.footer__hours-type {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  margin-top: 0.5rem;
+}
+
+.footer__hours-time {
+  font-size: 0.8125rem;
+  color: rgba(255,255,255,0.65);
+  margin-top: 0.15rem;
+}
+
+.footer__hours-day--closed .footer__hours-type {
+  color: rgba(255,255,255,0.3);
+  margin-top: 0;
+  font-size: 0.8125rem;
+  text-transform: none;
+  letter-spacing: 0;
 }
 
 .footer__col-title {
