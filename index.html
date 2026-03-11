@@ -136,9 +136,6 @@
       <nav class="header__nav" aria-label="Primary navigation">
         <ul class="nav__list" role="list">
 
-          <li class="nav__item">
-            <a href="/" class="nav__link">Home</a>
-          </li>
 
           <!-- Treatments dropdown -->
           <li class="nav__item">
@@ -206,11 +203,24 @@
     </div>
   </header>
 
+  <!-- Jump navigation -->
+  <nav class="jump-nav" aria-label="Page sections">
+    <div class="jump-nav__inner">
+      <a href="#pollen" class="jump-nav__link">Pollen</a>
+      <a href="#symptoms" class="jump-nav__link">Symptoms</a>
+      <a href="#treatments" class="jump-nav__link">Treatments</a>
+      <a href="#immunotherapy" class="jump-nav__link">Immunotherapy</a>
+      <a href="#blog" class="jump-nav__link">Blog</a>
+      <a href="#testimonials" class="jump-nav__link">Patient Stories</a>
+      <a href="#about" class="jump-nav__link">About</a>
+      <a href="#faq" class="jump-nav__link">FAQ</a>
+    </div>
+  </nav>
+
   <!-- Mobile navigation overlay -->
   <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation" aria-hidden="true">
     <button class="mobile-nav__close" id="menu-close" aria-label="Close navigation menu">Close</button>
     <ul class="mobile-nav__list" role="list">
-      <li><a href="/" class="mobile-nav__link">Home</a></li>
       <li>
         <a href="/treatments/" class="mobile-nav__link">Treatments</a>
         <ul class="mobile-nav__sub" role="list">
@@ -1576,6 +1586,37 @@
   </script>
 
   <script>lucide.createIcons();</script>
+
+  <script>
+    (function () {
+      var jumpNav = document.querySelector('.jump-nav');
+      var jumpLinks = document.querySelectorAll('.jump-nav__link[href^="#"]');
+      var sections = Array.from(jumpLinks)
+        .map(function (l) { return document.querySelector(l.getAttribute('href')); })
+        .filter(Boolean);
+
+      function update() {
+        var scrollY = window.scrollY;
+        /* Show after ~20% of hero */
+        if (scrollY > window.innerHeight * 0.2) {
+          jumpNav.classList.add('is-visible');
+        } else {
+          jumpNav.classList.remove('is-visible');
+        }
+        /* Active link */
+        var current = sections.reduce(function (acc, sec) {
+          return sec.offsetTop - 80 <= scrollY ? sec : acc;
+        }, sections[0]);
+        jumpLinks.forEach(function (l) {
+          l.classList.toggle('jump-nav__link--active',
+            l.getAttribute('href') === '#' + (current && current.id));
+        });
+      }
+
+      window.addEventListener('scroll', update, { passive: true });
+      update();
+    })();
+  </script>
 
   <script>
     (function () {

@@ -354,6 +354,69 @@ button {
    7. HEADER & NAVIGATION
    ============================================================ */
 
+/* Jump navigation — slides down below the solid header */
+.jump-nav {
+  position: fixed;
+  top: 132px; /* matches solid header height: 35px margin + 72px inner + 25px padding */
+  left: 0;
+  right: 0;
+  z-index: 999;
+  background: #fff;
+  border-bottom: 1px solid var(--stone);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-12px);
+  transition: opacity 0.25s var(--ease), transform 0.25s var(--ease);
+}
+
+.jump-nav.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.jump-nav__inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  padding-inline: 45px;
+  height: 44px;
+  max-width: var(--container);
+  margin-inline: auto;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.jump-nav__inner::-webkit-scrollbar { display: none; }
+
+.jump-nav__link {
+  flex-shrink: 0;
+  padding: 0 0.875rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid transparent;
+  transition: color var(--duration) var(--ease), border-color var(--duration) var(--ease);
+}
+
+.jump-nav__link:hover {
+  color: var(--text-primary);
+  border-bottom-color: var(--amber);
+}
+
+.jump-nav__link--active {
+  color: var(--text-primary);
+  border-bottom-color: var(--amber);
+}
+
+
 .site-header {
   position: fixed;
   top: 0;
@@ -963,6 +1026,20 @@ button {
 /* ============================================================
    10. POLLEN / SEASONAL UTILITY SECTION
    ============================================================ */
+
+/* Offset anchor jumps for fixed header + jump nav (132px + 44px) */
+.pollen-section,
+.symptoms-section,
+.treatments-section,
+.immuno-section,
+.root-cause-section,
+.blog-section,
+.testimonials-section,
+.about-section,
+.faq-section,
+.final-cta {
+  scroll-margin-top: 176px;
+}
 
 .pollen-section {
   background: var(--warm-white);
