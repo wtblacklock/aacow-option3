@@ -1804,7 +1804,6 @@ button {
   background: var(--navy-deep);
   overflow: hidden;
   position: relative;
-  padding-bottom: 0;
 }
 
 .testimonials-section::before {
@@ -1929,6 +1928,7 @@ button {
 
 .about-section {
   background: var(--warm-white);
+  padding-top: 0;
 }
 
 /* Full-width team image */
